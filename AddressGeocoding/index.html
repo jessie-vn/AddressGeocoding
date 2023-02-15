@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Geocoding</title>
+  <title>Geocoding map</title>
   <meta name="author" content="Jessie van Nuenen">
   <meta name="description" content="Sample site as resource to build your first PWA">
   <meta name="keywords" content="pwa,fontys,smart mobile,geocoding,address,maps,location">
@@ -13,12 +13,14 @@
 </head>
 
 <body>
-  <div id="website_container">
-    <div class="content">
+  <h1>Map</h1>
+  
+  <div id="map"></div>
 
-    </div>
-  </div>
   <script src="js/scripts.js" type="text/javascript"></script>
+  <script async
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTogBWqzzSDjZf1mQky-uFVCgLFecPenU&callback=initMap">
+</script>
 </body>
 
 </html>

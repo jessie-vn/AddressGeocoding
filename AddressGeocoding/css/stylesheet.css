@@ -67,22 +67,6 @@ p:last-child {
 	margin: 0px;
 }
 
-/* Other elements */
-#website_container {
-	width: 310px;
-	height: 100vh;
-	text-align: center;
-	margin: 0px auto;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	overflow: hidden;
-}
-
-#website_container .content {
-	border-radius: 15px;
-	background-color: var(--colors-background-light);
-	color: var(--colors-text-dark);
-	padding: 15px;
-	overflow: hidden;
+#map{
+	height: 90vh;
 }
