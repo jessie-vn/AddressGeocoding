@@ -2,7 +2,7 @@
     "theme_color": "#8c8c8c",
     "background_color": "#bfbfbf",
     "display": "standalone",
-    "scope": ".",
+    "scope": "..",
     "start_url": "/",
     "name": "AddressGeocoding",
     "short_name": "Geocoding",
