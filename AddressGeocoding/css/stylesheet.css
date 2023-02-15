@@ -1,0 +1,28 @@
+/* Variables */
+:root {
+	--colors-background-dark:#444;
+	--colors-background-light:#ffff;
+	--colors-text-light:#fff; 
+	--colors-text-highlight:#456ebf;
+	--colors-text-dark:#000; 
+	--fonts-normal-text:arial,verdana; 
+}
+
+/* Small resets */
+*														{ box-sizing:border-box; }
+html, body, form						{ padding:0px;margin:0px; }
+
+/* Main elements */
+body													{ background:url("../images/yes.gif") center center no-repeat var(--colors-background-dark);background-size:cover;font-family:var(--fonts-normal-text);font-size:14px;font-weight:400;color:var(--colors-text-light); }
+main													{ margin-bottom:10px; }
+main strong										{ display:inline-block;padding:10px;background-color:var(--colors-text-highlight);color:var(--colors-text-light);border-radius:5px; }
+footer												{ font-size:0.85em; }
+h1														{ font-size:1.5em;margin:0px 0px 15px 0px; }
+p															{ margin:0px 0px 15px 0px; }
+p a														{ color:var(--colors-text-highlight);text-decoration:none; }
+p a:hover											{ text-decoration:underline; }
+p:last-child									{ margin:0px; }
+
+/* Other elements */
+#website_container						{ width:310px;height:100vh;text-align:center;margin:0px auto;display:flex;justify-content:center;align-items:center;overflow:hidden; }
+#website_container .content		{ border-radius:15px;background-color:var(--colors-background-light);color:var(--colors-text-dark);padding:15px;overflow:hidden; }
