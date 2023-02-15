@@ -1,11 +1,11 @@
 {
-    "theme_color": "#35d8f6",
-    "background_color": "#bee2e8",
-    "display": "minimal-ui",
+    "theme_color": "#8c8c8c",
+    "background_color": "#bfbfbf",
+    "display": "standalone",
     "scope": ".",
     "start_url": "/",
-    "name": "My First PWA",
-    "short_name": "First PWA",
+    "name": "AddressGeocoding",
+    "short_name": "Geocoding",
     "icons": [
         {
             "src": "./icon-192x192.png",
