@@ -29,9 +29,9 @@ function initMap() {
   });
   
 new google.maps.Marker({
-  position: {lat: 51.451224988053085, lng: 5.453770513494129 },
+  position: {lat: 51.451224988053085, lng: 5.453770513494129 }, //TODO: make it use live location if time
   map,
-  title: "Start location",
+  title: "Your location",
   icon:{
     url: "../images/marker.svg",
     scaledSize: new google.maps.Size(38,41)
