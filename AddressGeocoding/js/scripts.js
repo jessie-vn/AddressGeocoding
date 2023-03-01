@@ -53,6 +53,11 @@ let IconOptions = {
   icon: customLocation
 }
 
+let MarkerOptions = {
+  title: null,
+  icon: customMarker
+}
+
 let marker = new L.Marker([51.451224988053085,5.453770513494129],IconOptions);
 marker.addTo(map);
 
@@ -69,8 +74,11 @@ const addressSearchControl = L.control.addressSearch(apiKey, {
     }
     if(searchLocationMarker !== null){
       map.removeLayer(searchLocationMarker);
+      MarkerOptions.title = null;
     }
-    searchLocationMarker = L.marker([address.lat, address.lon], {icon: customMarker}).addTo(map);
+    console.log(address)
+    MarkerOptions.title = address.formatted;
+    searchLocationMarker = L.marker([address.lat, address.lon], MarkerOptions).addTo(map);
     map.setView([address.lat, address.lon], 18);
   }
 });  
