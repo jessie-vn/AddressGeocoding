@@ -76,7 +76,6 @@ const addressSearchControl = L.control.addressSearch(apiKey, {
       map.removeLayer(searchLocationMarker);
       MarkerOptions.title = null;
     }
-    console.log(address)
     MarkerOptions.title = address.formatted;
     searchLocationMarker = L.marker([address.lat, address.lon], MarkerOptions).addTo(map);
     map.setView([address.lat, address.lon], 18);
