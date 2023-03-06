@@ -72,11 +72,19 @@ p:last-child {
 	height: 100vh;
 }
 
-.geoapify-leaflet-control {
+.geoapify-leaflet-control{
 	min-width: 225px !important;
 	width: 400px !important;
 	max-width: 95vw !important;
 	border: solid #333333ae !important;
+}
+
+.geoapify-leaflet-control .geoapify-form .geoapify-address-input{
+	height: 40px !important;
+}
+
+.geoapify-clear-button{
+	height: 40px !important;
 }
 
 .geoapify-form {
@@ -86,3 +94,16 @@ p:last-child {
 .geoapify-clear-button {
 	color: #333333ae !important;
 }
+
+.leaflet-top.leaflet-left {
+	display: flex;
+	flex-direction: column;
+  }
+  
+  .leaflet-top.leaflet-left > *:nth-child(2) {
+	order: -1;
+  }
+
+  .leaflet-control-zoom{
+	width: 33px;
+  }
