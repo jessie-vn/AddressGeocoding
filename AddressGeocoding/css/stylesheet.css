@@ -67,13 +67,22 @@ p:last-child {
 	margin: 0px;
 }
 
-#map{
+#map {
 	width: 100%;
 	height: 100vh;
 }
 
 .geoapify-leaflet-control {
 	min-width: 225px !important;
-    width: 400px !important;
-    max-width: 95vw !important;
+	width: 400px !important;
+	max-width: 95vw !important;
+	border: solid #333333ae !important;
+}
+
+.geoapify-form {
+	background-color: #A7C7E7;
+}
+
+.geoapify-clear-button {
+	color: #333333ae !important;
 }
