@@ -131,3 +131,36 @@ const addressSearchControl = L.control.addressSearch(apiKey, {
 });
 
 map.addControl(addressSearchControl);
+
+const myLocationControl = L.Control.extend({
+  options: {
+    position: "topleft"
+  },
+
+  onAdd: function(map) {
+    const container = L.DomUtil.create("div", "leaflet-bar leaflet-control leaflet-button");
+
+    const button = L.DomUtil.create("button", "location-button", container);
+    button.style.width = "30px";
+    button.style.height = "30px";
+    button.style.backgroundImage = 'url("../images/currentlocation.svg")';
+    button.style.backgroundSize = "contain";
+    button.title = "My location";
+
+    L.DomEvent.on(button, "click", function() {
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(function(location) {
+          appendLocation(location);
+        }, function(error) {
+          console.log(error);
+        });
+      } else {
+        console.log("Geolocation API not supported.");
+      }
+    });
+
+    return container;
+  }
+});
+
+map.addControl(new myLocationControl());

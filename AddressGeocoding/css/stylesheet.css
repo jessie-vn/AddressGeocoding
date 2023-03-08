@@ -76,7 +76,6 @@ p:last-child {
 	min-width: 225px !important;
 	width: 400px !important;
 	max-width: 95vw !important;
-	border: solid #333333ae !important;
 }
 
 .geoapify-leaflet-control .geoapify-form .geoapify-address-input{
@@ -104,6 +103,17 @@ p:last-child {
 	order: -1;
   }
 
-  .leaflet-control-zoom{
+  .leaflet-bar.leaflet-control{
+	border: 2px solid #5c5b5b8b !important;
 	width: 33px;
+  }
+
+  .leaflet-bar.leaflet-control.leaflet-button{
+	height: 33px;
+  }
+
+  .leaflet-bar.leaflet-control.leaflet-button .location-button{
+	border-radius: 3px;
+	border-style: none;
+	background-color: white;
   }
