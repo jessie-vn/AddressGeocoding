@@ -18,19 +18,12 @@ self.addEventListener("activate", (activating) => {
 });
 
 self.addEventListener("fetch", (fetching) => {
-  console.log("Service Worker: User threw a ball, I need to fetch it!");
   fetching.respondWith(
     caches.match(fetching.request.url).then((response) => {
-      console.log("Service Worker: Fetching resource " + fetching.request.url);
       return (
         response ||
         fetch(fetching.request)
           .then((response) => {
-            console.log(
-              "Service Worker: Resource " +
-                fetching.request.url +
-                " not available in cache"
-            );
             return caches.open("Cache-geocoding").then((cache) => {
               if (
                 !(
