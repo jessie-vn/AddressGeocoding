@@ -33,17 +33,18 @@ self.addEventListener("fetch", (fetching) => {
             );
             return caches.open("Cache-geocoding").then((cache) => {
               if (
-                fetching.request.url.match(
-                  ".*.tile.openstreetmap.org/.*.png"
-                ) ||
-                fetching.request.url.match(".*/service-worker.js")
+                !(
+                  fetching.request.url.match(
+                    ".*.tile.openstreetmap.org/.*.png"
+                  ) || fetching.request.url.match(".*/service-worker.js")
+                )
               ) {
-                return response;
+                console.log(
+                  "Service Worker: Caching (new) resource " +
+                    fetching.request.url
+                );
+                cache.put(fetching.request, response.clone());
               }
-              console.log(
-                "Service Worker: Caching (new) resource " + fetching.request.url
-              );
-              cache.put(fetching.request, response.clone());
               return response;
             });
           })
@@ -59,7 +60,17 @@ self.addEventListener("fetch", (fetching) => {
 });
 
 self.addEventListener("push", (pushing) => {
-  console.log(
-    "Service Worker: I received some push data, but because I am still very simple I don't know what to do with it :("
-  );
+  if (pushing.data) {
+    pushdata = JSON.parse(pushing.data.text());
+    console.log("Service Worker: I received this:", pushdata);
+    if (pushdata["title"] != "" && pushdata["message"] != "") {
+      const options = { body: pushdata["message"] };
+      self.registration.showNotification(pushdata["title"], options);
+      console.log("Service Worker: I made a notification for the user");
+    } else {
+      console.log(
+        "Service Worker: I didn't make a notification for the user, not all the info was there :("
+      );
+    }
+  }
 });
