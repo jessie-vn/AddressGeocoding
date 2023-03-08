@@ -118,3 +118,7 @@ p:last-child {
 	border-style: none;
 	background-color: white;
   }
+
+  .leaflet-bar.leaflet-control.leaflet-button :hover{
+	cursor: pointer;
+  }
