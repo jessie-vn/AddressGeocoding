@@ -87,11 +87,12 @@ p:last-child {
 }
 
 .geoapify-form {
-	background-color: #A7C7E7;
+	background-color: #accde2;
 }
 
 .geoapify-clear-button {
-	color: #333333ae !important;
+	color: #61737d !important;
+	padding-right: 1px;
 }
 
 .leaflet-top.leaflet-left {
