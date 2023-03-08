@@ -88,7 +88,7 @@ if ("geolocation" in navigator) {
 let map = new L.map("map", mapOptions);
 
 let layer = new L.TileLayer(
-  "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 );
 map.addLayer(layer);
 
