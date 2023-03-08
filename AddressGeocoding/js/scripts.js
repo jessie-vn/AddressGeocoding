@@ -74,6 +74,9 @@ if ("geolocation" in navigator) {
       marker.setLatLng(latlng);
       console.log("Accuracy: " + location.coords.accuracy);
       if (focused) {
+        if(map.getZoom() < 15){
+          map.setZoom(15);
+        }
         map.panTo(latlng);
       }
     },
@@ -196,3 +199,7 @@ const addressSearchControl = L.control.addressSearch(apiKey, {
 map.addControl(addressSearchControl);
 
 map.addControl(new myLocationControl());
+
+map.on('dragstart', function () {
+  focused = false;
+});
