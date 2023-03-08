@@ -80,7 +80,7 @@ if ("geolocation" in navigator) {
     function (error) {
       console.log(error);
     }
-  ) }, 5000);
+  ) }, 1000);
 } else {
   target.innerText = "Geolocation API not supported.";
 }
