@@ -36,16 +36,16 @@ self.addEventListener("fetch", (fetching) => {
                   "Service Worker: Caching (new) resource " +
                     fetching.request.url
                 );
-                cache.put(fetching.request, response.clone());
+                if (fetching.request.method === "GET") {
+                  cache.put(fetching.request, response.clone());
+                }
               }
               return response;
             });
           })
           .catch(function () {
             console.log("Service Worker: Fetching online failed, HAALLPPPP!!!");
-            self.clients
-            .matchAll({ type: "window" })
-            .then((clients) => {
+            self.clients.matchAll({ type: "window" }).then((clients) => {
               clients.forEach((client) => {
                 client.postMessage({
                   type: "offline",
