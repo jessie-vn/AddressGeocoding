@@ -60,6 +60,7 @@ let mapOptions = {
 };
 
 let focused = true;
+let zoomfocus = true;
 
 //TODO: set an option for when location is disabled/blocked
 
@@ -72,12 +73,15 @@ if ("geolocation" in navigator) {
         location.coords.longitude
       );
       marker.setLatLng(latlng);
-      console.log("Accuracy: " + location.coords.accuracy);
       if (focused) {
+        if(zoomfocus){
         if(map.getZoom() < 15){
           map.setZoom(15);
         }
+        zoomfocus = true;
+      }
         map.panTo(latlng);
+        focused = true;
       }
     },
     function (error) {
@@ -146,6 +150,7 @@ const myLocationControl = L.Control.extend({
 
     L.DomEvent.on(button, "click", function () {
       focused = true;
+      zoomfocus = true;
       if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(
           function (location) {
@@ -202,4 +207,8 @@ map.addControl(new myLocationControl());
 
 map.on('dragstart', function () {
   focused = false;
+});
+
+map.on('zoomstart', function () {
+  zoomfocus = false;
 });
