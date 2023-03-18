@@ -60,34 +60,28 @@ let mapOptions = {
 };
 
 let focused = true;
-let zoomfocus = true;
 
 //TODO: set an option for when location is disabled/blocked
 
 if ("geolocation" in navigator) {
   setInterval(() => {
     navigator.geolocation.getCurrentPosition(
-    function (location) {
-      let latlng = L.latLng(
-        location.coords.latitude,
-        location.coords.longitude
-      );
-      marker.setLatLng(latlng);
-      if (focused) {
-        if(zoomfocus){
-        if(map.getZoom() < 15){
-          map.setZoom(15);
+      function (location) {
+        let latlng = L.latLng(
+          location.coords.latitude,
+          location.coords.longitude
+        );
+        marker.setLatLng(latlng);
+        if (focused) {
+          map.panTo(latlng);
+          focused = true;
         }
-        zoomfocus = true;
+      },
+      function (error) {
+        console.log(error);
       }
-        map.panTo(latlng);
-        focused = true;
-      }
-    },
-    function (error) {
-      console.log(error);
-    }
-  ) }, 1000);
+    );
+  }, 1000);
 } else {
   target.innerText = "Geolocation API not supported.";
 }
@@ -150,7 +144,6 @@ const myLocationControl = L.Control.extend({
 
     L.DomEvent.on(button, "click", function () {
       focused = true;
-      zoomfocus = true;
       if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(
           function (location) {
@@ -160,6 +153,9 @@ const myLocationControl = L.Control.extend({
             );
             marker.setLatLng(latlng);
             map.panTo(latlng);
+            if (map.getZoom() < 15) {
+              map.setZoom(15);
+            }
           },
           function (error) {
             console.log(error);
@@ -205,10 +201,6 @@ map.addControl(addressSearchControl);
 
 map.addControl(new myLocationControl());
 
-map.on('dragstart', function () {
+map.on("dragstart", function () {
   focused = false;
-});
-
-map.on('zoomstart', function () {
-  zoomfocus = false;
 });
