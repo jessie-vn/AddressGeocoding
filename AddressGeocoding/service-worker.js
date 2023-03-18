@@ -67,7 +67,10 @@ self.addEventListener("push", (pushing) => {
     pushdata = JSON.parse(pushing.data.text());
     console.log("Service Worker: I received this:", pushdata);
     if (pushdata["title"] != "" && pushdata["message"] != "") {
-      const options = { body: pushdata["message"] };
+      const options = {
+        body: pushdata["message"],
+        icon: "https://i484943.hera.fhict.nl/manifest/icon-512x512.png"
+      };
       self.registration.showNotification(pushdata["title"], options);
       console.log("Service Worker: I made a notification for the user");
     } else {
