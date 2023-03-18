@@ -1,6 +1,6 @@
 const cacheName = "Cache-geocoding";
 
-const appFiles = ["./", "index.html"];
+const appFiles = ["./", "index.html", "./images/no-internet.svg"];
 
 self.addEventListener("install", (installing) => {
   console.log("Service Worker: I am being installed, hello world!");
@@ -43,9 +43,19 @@ self.addEventListener("fetch", (fetching) => {
           })
           .catch(function () {
             console.log("Service Worker: Fetching online failed, HAALLPPPP!!!");
-            if (fetching.request.mode == "navigate") {
-              return;
-            }
+            self.clients
+            .matchAll({ type: "window" })
+            .then((clients) => {
+              clients.forEach((client) => {
+                client.postMessage({
+                  type: "offline",
+                  data: {
+                    mapHeight: "95vh",
+                  },
+                });
+              });
+            });
+            return caches.match("./images/no-internet.svg");
           })
       );
     })

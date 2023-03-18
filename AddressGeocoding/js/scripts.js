@@ -62,8 +62,6 @@ let mapOptions = {
 
 let focused = true;
 
-//TODO: set an option for when location is disabled/blocked
-
 if ("geolocation" in navigator) {
   setInterval(() => {
     navigator.geolocation.getCurrentPosition(
@@ -215,3 +213,19 @@ map.addControl(new myLocationControl());
 map.on("dragstart", function () {
   focused = false;
 });
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.addEventListener("message", (event) => {
+    if (event.data.type === "offline") {
+      const div = document.querySelector(".offline");
+      const divmap = document.querySelector("#map");
+      div.style.display = "block";
+      divmap.style.height = event.data.data.mapHeight;
+
+      window.addEventListener("online", () => {
+        div.style.display = "none";
+        divmap.style.height = "100vh";
+      });
+    }
+  });
+}
