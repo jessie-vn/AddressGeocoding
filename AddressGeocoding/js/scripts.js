@@ -57,6 +57,7 @@ if (typeof Notification !== typeof undefined) {
 
 let mapOptions = {
   zoom: 17,
+  center: [51.4515, 5.453444],
 };
 
 let focused = true;
@@ -76,8 +77,18 @@ if ("geolocation" in navigator) {
           map.panTo(latlng);
           focused = true;
         }
+        const div = document.querySelector(".alert");
+          div.style.display = "none";
+          const divmap = document.querySelector("#map");
+          divmap.style.height = "100vh"
       },
       function (error) {
+        if (error instanceof GeolocationPositionError && error.code == 1) {
+          const div = document.querySelector(".alert");
+          div.style.display = "block";
+          const divmap = document.querySelector("#map");
+          divmap.style.height = "95vh"
+        }
         console.log(error);
       }
     );

@@ -122,3 +122,16 @@ p:last-child {
   .leaflet-bar.leaflet-control.leaflet-button :hover{
 	cursor: pointer;
   }
+
+  .alert {
+	display: none;
+	height: 5vh;
+	width: 100%;
+	padding: 9px;
+	border-style: solid;
+	border-width: 1px;
+	font-size: 16px;
+	background-color: rgba(248, 215, 218, 1);
+	border-color: rgba(220, 53, 69, 1);
+	color: rgba(114, 28, 36,1);
+  }
