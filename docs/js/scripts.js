@@ -103,8 +103,8 @@ let layer = new L.TileLayer(
 map.addLayer(layer);
 
 let customMarker = L.icon({
-  iconUrl: "../images/marker.svg",
-  shadowUrl: "../images/markerShadow.svg",
+  iconUrl: "./images/marker.svg",
+  shadowUrl: "./images/markerShadow.svg",
   iconSize: [40, 40],
   iconAnchor: [20, 35],
   shadowSize: [35, 35],
@@ -112,8 +112,8 @@ let customMarker = L.icon({
 });
 
 let customLocation = L.icon({
-  iconUrl: "../images/currentlocation.svg",
-  shadowUrl: "../images/currentlocationShadow.svg",
+  iconUrl: "./images/currentlocation.svg",
+  shadowUrl: "./images/currentlocationShadow.svg",
   iconSize: [30, 30],
   iconAnchor: [15, 15],
   shadowSize: [34, 34],
@@ -147,7 +147,7 @@ const myLocationControl = L.Control.extend({
     const button = L.DomUtil.create("button", "location-button", container);
     button.style.width = "30px";
     button.style.height = "30px";
-    button.style.backgroundImage = 'url("../images/currentlocation.svg")';
+    button.style.backgroundImage = 'url("./images/currentlocation.svg")';
     button.style.backgroundSize = "contain";
     button.title = "My location";
 
