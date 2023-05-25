@@ -69,7 +69,7 @@ self.addEventListener("push", (pushing) => {
     if (pushdata["title"] != "" && pushdata["message"] != "") {
       const options = {
         body: pushdata["message"],
-        icon: "https://i484943.hera.fhict.nl/manifest/icon-512x512.png"
+        icon: "https://jessie-vn.github.io/AddressGeocoding/manifest/icon-512x512.png"
       };
       self.registration.showNotification(pushdata["title"], options);
       console.log("Service Worker: I made a notification for the user");
